@@ -43,6 +43,9 @@ for example:
 seatmate("A","B") this is make A and B become the seat mate
 setseat("A",1,1)  this is make A to seat at the place- 1 line, 1 column
 */
+    
+    
+    
     printgraph();
     freopen("seat.txt","w",stdout);
     printgraph();
