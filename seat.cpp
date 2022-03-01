@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <ctime>
-#define ddfor for (int i = 0, cnt = 0; i < nx; i++){ for (int j = 0; j < ny; j++) 
+#define ddfor for (int i = 0, cnt = 0; i < nx; i++){ for (int j = 0; j < ny && (i*ny+j)<n ; j++) 
 #define ddforend }
 using namespace std;
 int d[999],n,nx,ny;
@@ -33,7 +33,7 @@ int main()
 {
     srand(time(NULL));
     freopen("name.txt","r",stdin);
-    scanf("%d",&n);
+    scanf("%d%d%d",&n,&nx,&ny);
     randnum(d, n);
     for(int i=0;i<n;i++)    cin>>s[i];
     d122();
