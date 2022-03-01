@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cstdio>
 #include <ctime>
-#define ddfor for (int i = 0, njn, cnt = 0; i < 4; i++){ if (i == 0) njn = 7; else njn = 8; for (int j = 0; j < njn; j++) 
+#define ddfor for (int i = 0, cnt = 0; i < nx; i++){ for (int j = 0; j < ny; j++) 
 #define ddforend }
 using namespace std;
-int d[999];
-string ss[999][999], s[999] = {"龚搏扬", "袁伟伦", "章淏博", "赖思轩", "骆子墨", "金建烨", "杜心扬", "边麓元", "廖从云", "林彦含", "李星宸", "曾韦翔", "蔡朋骏", "吴周毅", "白宇轩", "王昊天", "郑俊永", "杨熙宇", "张宸瑞", "詹悦", "黄婧涵", "陈元畅", "程启航", "丁鹏元", "迟涵予", "张扬", "龙飞宇", "邱晨朔", "范青桐", "卢逸", "陈李"};
+int d[999],n,nx,ny;
+string ss[999][999], s[999];
 void d122(){ ddfor ss[i][j] = s[d[cnt++]]; ddforend }
-void setseat(string a, int ax, int ay){ ddfor if (ss[i][j] == a)  swap(ss[i][j], ss[ax][ay]); ddforend }
-void printgraph(){ ddfor {cout << ss[i][j] << "\t";} printf("\n"); ddforend }
+void setseat(string a, int ax, int ay){ ddfor if (ss[i][j] == a)  swap(ss[i][j], ss[ax-1][ay-1]); ddforend }
+void printgraph(){ ddfor {cout << ss[i][j] << "\t"; if(j%2==1){}} printf("\n"); ddforend }
 void seatmate(string a, string b)
 {
     int ax, ay, bx, by;
@@ -32,11 +32,20 @@ void randnum(int *x, int awa)
 int main()
 {
     srand(time(NULL));
-begin:
-    randnum(d, 31);
+    freopen("name.txt","r",stdin);
+    scanf("%d",&n);
+    randnum(d, n);
+    for(int i=0;i<n;i++)    cin>>s[i];
     d122();
+/*
+Add the requirements here
+for example:
+seatmate("A","B") this is make A and B become the seat mate
+setseat("A",1,1)  this is make A to seat at the place- 1 line, 1 column
+*/
     printgraph();
-    int x; cin>>x;
-    if(x==0) goto begin;
+    freopen("seat.txt","w",stdout);
+    printgraph();
+    fclose(stdout);
     return 0;
 }
